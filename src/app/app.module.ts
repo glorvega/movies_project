@@ -9,6 +9,7 @@ import { NavbarModule } from './core/navbar/navbar.module';
 import { DetailModule } from './pages/detail/detail.module';
 import { HomeModule } from './pages/home/home.module';
 import { ListModule } from './pages/list/list.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ListModule } from './pages/list/list.module';
     NavbarModule,
     DetailModule,
     ListModule,
-    HomeModule
+    HomeModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
