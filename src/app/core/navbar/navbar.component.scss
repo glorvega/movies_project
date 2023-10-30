@@ -1,0 +1,14 @@
+.navbar {
+    //box-shadow: rgb(0 0 0 / 20%) 0px 10px 10px -10px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    font-family: 'Unica One', sans-serif;
+    font-size: 30px;
+
+    .navbar-brand{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        font-size: 30px;
+    }
+}
