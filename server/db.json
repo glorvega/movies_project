@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Dancing Lady",
-      "poster": "http://dummyimage.com/400x600.png/cc0000/ffffff",
+      "poster": "https://cache.getarchive.net/Prod/thumb/cdn4/L3Bob3RvLzE5MzMvMDEvMDEvZGFuY2luZy1sYWR5LTEwMjQuanBn/320/472/jpg",
       "genre": [
         "Comedy",
         "Musical",
@@ -22,7 +22,7 @@
     {
       "id": 2,
       "title": "Mooring, The",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/9/9a/The_Mooring_FilmPoster.jpeg",
       "genre": [
         "Horror",
         "Thriller"
@@ -44,7 +44,7 @@
     {
       "id": 3,
       "title": "Black Rain (Kuroi ame)",
-      "poster": "http://dummyimage.com/400x600.png/5fa2dd/ffffff",
+      "poster": "https://m.media-amazon.com/images/S/pv-target-images/99af71072dfe7990e4efa5ad62e0f199d00fd086c1ed567b092d9874332dc9ec.jpg",
       "genre": [
         "Drama",
         "War"
@@ -59,7 +59,7 @@
     {
       "id": 4,
       "title": "Spring Break Shark Attack",
-      "poster": "http://dummyimage.com/400x600.png/cc0000/ffffff",
+      "poster": "https://static.hd-trailers.net/images/-117284-poster-xlarge.jpg",
       "genre": [
         "Adventure",
         "Drama",
@@ -77,7 +77,7 @@
     {
       "id": 5,
       "title": "Eulogy",
-      "poster": "http://dummyimage.com/400x600.png/ff4444/ffffff",
+      "poster": null,
       "genre": [
         "Comedy",
         "Crime",
@@ -95,7 +95,7 @@
     {
       "id": 6,
       "title": "V/H/S: Viral",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "poster": "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/46817304affd5bb0ec338e1742ee6079fc8fbcf2ede8407db7f4b29d4574a709._RI_TTW_.jpg",
       "genre": [
         "Horror",
         "Thriller"
@@ -112,7 +112,7 @@
     {
       "id": 7,
       "title": "Venus Wars (Venus Senki)",
-      "poster": "http://dummyimage.com/400x600.png/cc0000/ffffff",
+      "poster": "https://m.media-amazon.com/images/M/MV5BODllNjk1MDEtMzFmNi00MjU3LWI4NWMtMzYyZTYxNDUwNDQxXkEyXkFqcGdeQXVyMTA3OTEyODI1._V1_.jpg",
       "genre": [
         "Action",
         "Animation",
@@ -130,8 +130,8 @@
     },
     {
       "id": 8,
-      "title": "Godzilla vs. Mechagodzilla II (Gojira VS Mekagojira)",
-      "poster": null,
+      "title": "Godzilla vs. Mechagodzilla II",
+      "poster": "https://image.tmdb.org/t/p/w500/pEIdvfcmLnLNz54oRba4u7YL8VX.jpg",
       "genre": [
         "Action",
         "Drama",
@@ -149,7 +149,7 @@
     {
       "id": 9,
       "title": "Alien Nation: The Udara Legacy",
-      "poster": "http://dummyimage.com/400x600.png/5fa2dd/ffffff",
+      "poster": "https://image.tmdb.org/t/p/w500/nGlbYvKyNjLUFoi50ZIxIy9stX7.jpg",
       "genre": [
         "Sci-Fi"
       ],
@@ -165,7 +165,7 @@
     {
       "id": 10,
       "title": "Butterflies Have No Memories 3",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "poster": "https://media.licdn.com/dms/image/D5622AQF5SqLpB5ZRDw/feedshare-shrink_800/0/1679866265354?e=1700697600&v=beta&t=pvDKr7o0oYsq0Utp5mCs8OaNTESPw3SgukEWWwHOdVg",
       "genre": [
         "Nuevo Género",
         "Otro"

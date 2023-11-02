@@ -1,0 +1,20 @@
+<div class="companies-component">
+    <p class="companies-component__title">List of Companies</p>
+   
+    <div class="companies-component__cards">
+   
+    <app-card *ngFor="let company of companies" [company]="company"></app-card>
+
+       <div class="card" style="width: 18rem;">
+       <img src="https://dummyimage.com/600x400.png/1f121d/ffffff" class="card-img-top" alt="...">
+       <div class="card-body">
+         <h5 class="card-title">Movie Title</h5>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+         <a class="btn btn-outline-dark">Go somewhere</a>
+       </div>
+       </div>
+   
+   
+     </div>
+    </div>
+   

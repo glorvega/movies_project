@@ -1,6 +1,11 @@
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
-@import './reset';
-@import './scrollbar';
+/* Libraries */
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+/* Files */
+@import "./reset";
+@import "./scrollbar";
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap')
+@import url("https://fonts.googleapis.com/css2?family=Unica+One&display=swap");

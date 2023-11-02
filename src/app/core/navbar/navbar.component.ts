@@ -21,5 +21,17 @@ export class NavbarComponent {
     this.router.navigate(['list']);
   }
 
+  goToActors(){
+    this.router.navigate(['actors']);
+  }
+
+  goToCompanies(){
+    this.router.navigate(['companies']);
+  }
+
+  newMovie(){
+    this.router.navigate(['add-movie']);
+  }
+
 }
 

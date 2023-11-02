@@ -13,7 +13,10 @@
           <a class="nav-link" type="button" (click)="goToList()">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" type="button">Categories</a>
+          <a class="nav-link" type="button" (click)="goToCompanies()">Companies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" type="button" (click)="goToActors()">Actors</a>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
@@ -21,4 +24,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> -->
     </div>
+    <span>
+      <a class="btn btn-outline-light" (click)="newMovie()">Add Movie</a>
+    </span>
   </nav>

@@ -1,0 +1,23 @@
+.card {
+  transition: transform 0.2s;
+
+  .card-img-top {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card-text {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
