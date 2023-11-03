@@ -3,14 +3,19 @@
 
  <div class="list-component__cards">
 
-<app-card *ngFor="let movie of movies | async" [movie]="movie"></app-card>
+<app-card *ngFor="let movie of movies | async" [movie]="movie" (goToDetail)="goToDetail(movie)"></app-card>
+
+
+
+
+
 
     <div class="card" style="width: 18rem;">
     <img src="https://dummyimage.com/600x400.png/1f121d/ffffff" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Movie Title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a class="btn btn-outline-dark" (click)="goToDetail()">Go somewhere</a>
+      <a class="btn btn-outline-dark">Go somewhere</a>
     </div>
     </div>
 

@@ -19,8 +19,10 @@ public movies!:Observable<MovieInterface[]>
      }
 
 
-  public goToDetail(){
-    this.router.navigate(['detail']);
+  public goToDetail(movie: MovieInterface){
+    console.log('hola');
+    
+    this.router.navigate(['list','detail', movie.id]);
   }
 
   
