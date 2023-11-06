@@ -1,10 +1,9 @@
 <div class="card" style="width: 18rem;">
-    <img [src]="movie.poster | dummyImg" class="card-img-top" alt="{{movie.title}}">
+    <img [src]="movie.poster | dummyImg" (click)="navigateToDetail()" class="card-img-top" alt="{{movie.title}}">
     <div class="card-body">
       <h5 class="card-title">{{movie.title}}</h5>
       <p class="card-text">{{movie.genre + ' '}}</p>
       <div class="button-container">
-        <a class="btn btn-outline-dark" (click)="navigateToDetail()">Detalles</a>
         <a class="btn btn-outline-dark" (click)="onEditElement()">Edit</a>
         <a class="btn btn-outline-dark">Delete</a>
       </div>

@@ -1,1 +1,35 @@
-<p>MOVIE DETAILS</p>
+<div class="details-component" *ngIf="movie$ | async as movie">
+  <div class="details-component__movie">
+    <div class="details-component__movie--poster">
+      <img [src]="movie.poster" alt="{{ movie.title }}" />
+    </div>
+    <p class="details-component__movie--title">
+      {{ movie.title }}
+    </p>
+    <p class="details-component__movie--rating">{{ movie.imbdRating }}</p>
+    <p class="details-component__movie--duration">
+      Duration: {{ movie.duration }}
+    </p>
+    <p
+      class="details-component__movie--studio"
+      *ngFor="let company of movie.companies"
+    >
+      Studio: {{ company.name }}
+    </p>
+    <div class="details-component__movie--genre">
+      <h1>Genre(s):</h1>
+      <p *ngFor="let genre of movie.genre">
+        {{ genre }}
+      </p>
+    </div>
+
+    <div class="details-component__movie--actors">
+      <h1>Actors:</h1>
+      <p *ngFor="let actor of movie.actors">{{ actor.nombre_completo }}</p>
+    </div>
+
+    <button button type="button" class="btn btn-outline-light btn-lg">
+      Delete
+    </button>
+  </div>
+</div>

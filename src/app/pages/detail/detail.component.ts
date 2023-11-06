@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MovieInterfaceComplete } from './../../core/services/movie/movie.interface';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
+import { MovieService } from 'src/app/core/services/movie/movies.service';
 
 @Component({
   selector: 'app-detail',
@@ -9,15 +12,19 @@ import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
 })
 export class DetailComponent {
   movieId: string | null = '';
-  movieDetails!: MovieInterface;
+  movie$!: Observable<MovieInterfaceComplete>;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private movieService: MovieService
   ){
     this.movieId = this.route.snapshot.paramMap.get('movieId');
-    console.log(this.movieId);
+    if(this.movieId){
+      this.movie$ = this.movieService.getMovieComplete(Number(this.movieId));
+    }
     
   }
+
+
 
 }

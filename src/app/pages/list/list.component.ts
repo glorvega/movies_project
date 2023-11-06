@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/core/services/movie/movies.service';
 import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -10,50 +10,47 @@ import { Observable } from 'rxjs';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-public movies!:Observable<MovieInterface[]>
+public movies$!:Observable<MovieInterface[]>
+searchMovie: string = '';
+filteredMovies$!:Observable<MovieInterface[]>
+wrongMovie!: boolean;
 
   constructor(
     private router: Router,
     private service: MovieService) {
-      this.movies = service.getMovies();
+      
      }
-
+  
+  ngOnInit(){
+    this.movies$ = this.service.getMovies();
+    this.filterMovies();
+  }
 
   public goToDetail(movie: MovieInterface){
-    console.log('hola');
-    
     this.router.navigate(['list','detail', movie.id]);
   }
 
-  
-
-
-}
-
-/*   ngOnInit(): void {
-    this.getVideogames();
+  onSearchMovie(searchMovie: string){
+    this.searchMovie = searchMovie;
+    this.filterMovies();
   }
 
-  public getVideogames = () => {
-    this.creationsService
-      .getCreations()
-      .subscribe((creations: VideogamesInterface[]) => {
-        this.creations = creations;
-      });
-  };
-
-  public editCreation = (game: VideogamesInterface) => {
-    this.router.navigate(['create', game.id]);
-  };
-
-  public deleteCreation = (game: VideogamesInterface) => {
-    this.creationsService.deleteCreation(game.id).subscribe({
-      next: (id: any) => {
-        this.getVideogames();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  };
-}  */
+  filterMovies(){
+    if(this.searchMovie === '' || this.searchMovie.length < 3) {
+      this.filteredMovies$ = this.movies$
+      this.wrongMovie = false;
+    } else {
+      this.filteredMovies$ = this.movies$.pipe(
+        map((movies) => 
+        movies.filter((movie)=>
+        movie.title.toLowerCase().startsWith(this.searchMovie.toLowerCase())
+        )
+      )
+    );
+    this.wrongMovie = false;
+    this.filteredMovies$.subscribe(movie => {
+      this.wrongMovie = movie.length === 0;
+    })
+    }
+  }
+}

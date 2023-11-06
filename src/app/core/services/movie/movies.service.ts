@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
-import { Observable } from 'rxjs';
+import { ApiService } from '../api.service';
+import { Observable, forkJoin, map, switchMap } from 'rxjs';
+import { MovieInterface, MovieInterfaceComplete } from './movie.interface';
+import { ActorInterface } from '../actor/actor.interface';
+import { CompanyInterface } from '../company/company.interface';
 
 
 @Injectable({
@@ -9,37 +12,43 @@ import { Observable } from 'rxjs';
 })
 
 export class MovieService {
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient, private apiService: ApiService){
     }
 
-      getMovies(): Observable<MovieInterface[]> {
-        return this.http.get<MovieInterface[]>(
-          'http://localhost:3000/movies'
-        );
-      }
+    getMovies(){
+      return this.apiService.getMovies();
+    }
 
-      /* getMovie(): Observable<MovieInterface> {
-        return this.http.get<MovieInterface>(
-          `http://localhost:3000/movies/${id}`
-        );
-      }
+    getMovieComplete(movieId: number): Observable<MovieInterfaceComplete> {
+      return this.apiService.getMovieById(movieId).pipe(
+        switchMap((movie: MovieInterface) => {
+          // Obtener todas las compañías
+          return this.apiService.getCompanies().pipe(
+            map((companies: CompanyInterface[]) => {
+              // Filtrar las compañías que tienen la película en su lista de películas
+              const relatedCompanies = companies.filter(company => company.movies.includes(movie.id));
+              return relatedCompanies;
+            }),
+            switchMap((relatedCompanies: CompanyInterface[]) => {
+              // Obtener detalles de actores para la película
+              const actorsObservables: Observable<ActorInterface>[] = movie.actors.map(actorId => this.apiService.getActorById(actorId));
+  
+              return forkJoin(actorsObservables).pipe(
+                map((actors: ActorInterface[]) => {
+                  return {
+                    ...movie,
+                    actors: actors,
+                    companies: relatedCompanies
+                  };
+                })
+              );
+            })
+          );
+        })
+      );
+    }
+  
 
-      deleteMovie(): Observable<MovieInterface> {
-        return this.http.delete<MovieInterface>(
-          `http://localhost:3000/movies/${id}`
-        );
-      } */
-
-      /* editMovie(movie: MovieInterface): Observable<MovieInterface> {
-        return this.http.put<MovieInterface>(
-          `http://localhost:3000/movies/${movie.id}`,
-          movie,
-          {
-            headers: {
-              'Content-Type: 'application/json',
-            }
-          }
-        )s
-      } */
+      
       
 }
