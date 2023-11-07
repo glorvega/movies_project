@@ -1,14 +1,14 @@
 <div class="details-component" *ngIf="movie$ | async as movie">
   <div class="details-component__movie">
     <div class="details-component__movie--poster">
-      <img [src]="movie.poster" alt="{{ movie.title }}" />
+      <img [src]="movie.poster | dummyImg" alt="{{ movie.title }}" />
     </div>
     <p class="details-component__movie--title">
       {{ movie.title }}
     </p>
-    <p class="details-component__movie--rating">{{ movie.imbdRating }}</p>
+    <p class="details-component__movie--rating">{{ movie.imdbRating }}</p>
     <p class="details-component__movie--duration">
-      Duration: {{ movie.duration }}
+      Duration: {{ movie.duration | duration }}
     </p>
     <p
       class="details-component__movie--studio"
@@ -28,7 +28,12 @@
       <p *ngFor="let actor of movie.actors">{{ actor.nombre_completo }}</p>
     </div>
 
-    <button button type="button" class="btn btn-outline-light btn-lg">
+    <button
+      button
+      type="button"
+      class="btn btn-outline-light btn-lg"
+      (click)="deleteMovie()"
+    >
       Delete
     </button>
   </div>

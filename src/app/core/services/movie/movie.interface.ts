@@ -8,7 +8,7 @@ export interface MovieInterface {
   genre: string[];
   year: number;
   duration: number;
-  imbdRating: number;
+  imdbRating: number;
   actors: number[];
 }
 
@@ -19,7 +19,7 @@ export interface MovieInterfaceComplete {
   genre: string[];
   year: number;
   duration: number;
-  imbdRating: number;
+  imdbRating: number;
   actors: ActorInterface[];
   companies: CompanyInterface[];
 }

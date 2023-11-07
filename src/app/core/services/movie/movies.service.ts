@@ -12,7 +12,7 @@ import { CompanyInterface } from '../company/company.interface';
 })
 
 export class MovieService {
-    constructor(private http: HttpClient, private apiService: ApiService){
+    constructor(private apiService: ApiService){
     }
 
     getMovies(){
@@ -32,7 +32,6 @@ export class MovieService {
             switchMap((relatedCompanies: CompanyInterface[]) => {
               // Obtener detalles de actores para la película
               const actorsObservables: Observable<ActorInterface>[] = movie.actors.map(actorId => this.apiService.getActorById(actorId));
-  
               return forkJoin(actorsObservables).pipe(
                 map((actors: ActorInterface[]) => {
                   return {
@@ -40,7 +39,10 @@ export class MovieService {
                     actors: actors,
                     companies: relatedCompanies
                   };
-                })
+                  
+                },
+                console.log(movie.imdbRating)
+                )
               );
             })
           );

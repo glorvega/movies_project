@@ -1,13 +1,16 @@
 <div class="list-component">
- <p class="list-component__title">Movie Catalog</p>
-<app-search (searchMovie)="onSearchMovie($event)"></app-search>
- <div class="list-component__cards">
+  <p class="list-component__title">Movie Catalog</p>
+  <app-search (searchMovie)="onSearchMovie($event)"></app-search>
+  <div class="list-component__cards">
+    <app-card
+      *ngFor="let movie of filteredMovies$ | async"
+      [movie]="movie"
+      (goToDetail)="goToDetail(movie)"
+      [isMovie]="true"
+    ></app-card>
 
-<app-card *ngFor="let movie of filteredMovies$ | async" [movie]="movie" (goToDetail)="goToDetail(movie)"></app-card>
-
-<div class="alert alert-danger" role="alert" *ngIf="(wrongMovie)">
-  No movies found starting with "{{searchMovie}}", please try again.
-</div>
-
+    <div class="alert alert-danger" role="alert" *ngIf="wrongMovie">
+      No movies found starting with "{{ searchMovie }}", please try again.
+    </div>
   </div>
- </div>
+</div>

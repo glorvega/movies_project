@@ -5,14 +5,15 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { DummyImgPipe } from './pipes/dummy.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { DurationPipe } from './pipes/duration.pipe';
 
 
 
 @NgModule({
-  declarations: [CardComponent, PaginationComponent, DummyImgPipe, SearchComponent],
+  declarations: [CardComponent, PaginationComponent, DummyImgPipe, DurationPipe, SearchComponent],
   imports: [
     CommonModule, FormsModule
   ],
-  exports: [CardComponent, PaginationComponent, DummyImgPipe, SearchComponent]
+  exports: [CardComponent, PaginationComponent, DummyImgPipe, DurationPipe, SearchComponent]
 })
 export class SharedModule { }
