@@ -4,8 +4,8 @@
   <div class="list-component__cards">
     <app-card
       *ngFor="let movie of filteredMovies$ | async"
-      [movie]="movie"
-      (goToDetail)="goToDetail(movie)"
+      [item]="movie"
+      (goToDetail)="goToDetail(movie.id)"
       [isMovie]="true"
     ></app-card>
 

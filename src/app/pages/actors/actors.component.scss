@@ -1,42 +1,43 @@
 .actors-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  min-height: 78.8vh;
+  background-color: rgba(0, 0, 0, 0.734);
+  color: whitesmoke;
+
+  &__title {
+    text-align: center;
+    font-family: "Unica One", sans-serif;
+    font-size: 40px;
+  }
+
+  &__cards {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
-    padding: 40px;
-    min-height: 78.8vh;
-    background-color: rgba(0, 0, 0, 0.734);
-    color: whitesmoke;
+    color: rgba(0, 0, 0, 0.734);
 
-    &__title {
-        text-align: center;
-        font-family: 'Unica One', sans-serif;
-        font-size: 40px;
-    }
+    .card {
+      transition: transform 0.2s;
 
-    &__cards {
+      &:hover {
+        transform: scale(1.15);
+      }
+
+      .card-body {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 30px;
-        color: rgba(0, 0, 0, 0.734);
-        
-        .card {
-            transition: transform .2s;
+        flex-direction: column;
+        align-items: center;
 
-        &:hover {
-            transform: scale(1.15);
+        .card-text {
+          margin-bottom: 0.75rem;
         }
-        
-            .card-body {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                .card-text {
-                    margin-bottom: 0.75rem;
-                }
-            }
-        }
+      }
     }
+  }
 }

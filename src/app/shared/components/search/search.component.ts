@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { Subject, Subscription, debounceTime } from 'rxjs';
 import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
 
@@ -7,7 +7,7 @@ import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnDestroy {
   inputSearch: string = '';
   searchSubject = new Subject<string>();
   private subscription: Subscription;
@@ -31,6 +31,6 @@ export class SearchComponent {
     this.searchMovie.emit(this.inputSearch)
   } */
 
-  
+
 
 }

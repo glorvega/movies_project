@@ -1,67 +1,105 @@
 <div class="add-movie">
-<div class="add-movie__form">
+  <div class="add-movie__form">
     <h3 class="add-movie__form--title">Add a new movie</h3>
-    <form>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="text" aria-describedby="title" placeholder="Insert movie title...">
-        </div>
-        <div class="form-group">
-          <label for="poster">Cover</label>
-          <input type="url" class="form-control" id="exampleInputPassword1" placeholder="Insert cover url...">
-        </div>
-        <div class="form-group">
-            <label for="genre">Genre</label>
-            <select class="form-control" id="genre">
-                <option>Comedy</option>
-                <option>Musical</option>
-                <option>Romance</option>
-                <option>Horror</option>
-                <option>Thriller</option>
-                <option>Drama</option>
-                <option>Adventure</option>
-                <option>Crime</option>
-                <option>Action</option>
-                <option>Animation</option>
-                <option>Sci-fi</option>
-                <option>New Genre</option>
-                <option>Other</option>
-              </select>
-        </div>
-        <div class="form-group">
-            <label for="actors">Actors</label>
-            <select class="form-control" id="actors">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            
-              </select>
-        </div>
-        <div class="form-group">
-            <label for="studios">Film Studios</label>
-            <select class="form-control" id="studios">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>∫∫
-              </select>
-        </div>
-        <div class="form-group">
-            <label for="year">Year</label>
-            <input type="number" class="form-control" id="year" min="1900" max="2099" placeholder="Insert year...">
-          </div>
-        <div class="form-group">
-            <label for="number">Duration</label>
-            <input type="number" class="form-control" id="duration" placeholder="Insert duration...">
-          </div>
-        <div class="form-group">
-            <label for="number">Rating</label>
-            <input type="number" class="form-control" id="rating" placeholder="Insert rating...">
-          </div>
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-      </form>
-</div>
+    <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="text"
+          aria-describedby="title"
+          placeholder="Insert movie title..."
+          formControlName="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="poster">Cover</label>
+        <input
+          type="url"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Insert cover url..."
+          formControlName="cover"
+        />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <select class="form-control" id="genre" formControlName="genre">
+          <option>Comedy</option>
+          <option>Musical</option>
+          <option>Romance</option>
+          <option>Horror</option>
+          <option>Thriller</option>
+          <option>Drama</option>
+          <option>Adventure</option>
+          <option>Crime</option>
+          <option>Action</option>
+          <option>Animation</option>
+          <option>Sci-fi</option>
+          <option>New Genre</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="actors">Actors</label>
+        <select class="form-control" id="actors" formControlName="actors">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="studios">Film Studios</label>
+        <select class="form-control" id="studios" formControlName="studios">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input
+          type="number"
+          class="form-control"
+          id="year"
+          min="1940"
+          max="2023"
+          placeholder="Insert year..."
+          formControlName="year"
+        />
+      </div>
+      <div class="form-group">
+        <label for="number">Duration</label>
+        <input
+          type="number"
+          class="form-control"
+          id="duration"
+          min="0"
+          max="500"
+          placeholder="Insert duration..."
+          formControlName="duration"
+        />
+      </div>
+      <div class="form-group">
+        <label for="number">Rating</label>
+        <input
+          type="number"
+          class="form-control"
+          id="rating"
+          placeholder="Insert rating..."
+          formControlName="rating"
+          min="0"
+          max="10"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>

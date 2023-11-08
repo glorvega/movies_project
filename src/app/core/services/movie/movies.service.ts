@@ -8,49 +8,49 @@ import { CompanyInterface } from '../company/company.interface';
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class MovieService {
-    constructor(private apiService: ApiService){
-    }
+  constructor(private apiService: ApiService) {
+  }
 
-    getMovies(){
-      return this.apiService.getMovies();
-    }
+  getMovies() {
+    return this.apiService.getMovies();
+  }
 
-    getMovieComplete(movieId: number): Observable<MovieInterfaceComplete> {
-      return this.apiService.getMovieById(movieId).pipe(
-        switchMap((movie: MovieInterface) => {
-          // Obtener todas las compañías
-          return this.apiService.getCompanies().pipe(
-            map((companies: CompanyInterface[]) => {
-              // Filtrar las compañías que tienen la película en su lista de películas
-              const relatedCompanies = companies.filter(company => company.movies.includes(movie.id));
-              return relatedCompanies;
-            }),
-            switchMap((relatedCompanies: CompanyInterface[]) => {
-              // Obtener detalles de actores para la película
-              const actorsObservables: Observable<ActorInterface>[] = movie.actors.map(actorId => this.apiService.getActorById(actorId));
-              return forkJoin(actorsObservables).pipe(
-                map((actors: ActorInterface[]) => {
-                  return {
-                    ...movie,
-                    actors: actors,
-                    companies: relatedCompanies
-                  };
-                  
-                },
+  getMovieComplete(movieId: number): Observable<MovieInterfaceComplete> {
+    return this.apiService.getMovieById(movieId).pipe(
+      switchMap((movie: MovieInterface) => {
+        //obtener todas las compañías
+        return this.apiService.getCompanies().pipe(
+          map((companies: CompanyInterface[]) => {
+            //filtrar las compañías que tienen la película en su listado
+            const relatedCompanies = companies.filter(company => company.movies.includes(movie.id));
+            return relatedCompanies;
+          }),
+          switchMap((relatedCompanies: CompanyInterface[]) => {
+            //obtener detalles de actores para la película
+            const actorsObservables: Observable<ActorInterface>[] = movie.actors.map(actorId => this.apiService.getActorById(actorId));
+            return forkJoin(actorsObservables).pipe(
+              map((actors: ActorInterface[]) => {
+                return {
+                  ...movie,
+                  actors: actors,
+                  companies: relatedCompanies
+                };
+
+              },
                 console.log(movie.imdbRating)
-                )
-              );
-            })
-          );
-        })
-      );
-    }
-  
+              )
+            );
+          })
+        );
+      })
+    );
+  }
 
-      
-      
+
+
+
 }

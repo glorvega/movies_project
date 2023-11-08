@@ -6,7 +6,9 @@
     <p class="details-component__movie--title">
       {{ movie.title }}
     </p>
-    <p class="details-component__movie--rating">{{ movie.imdbRating }}</p>
+    <p class="details-component__movie--rating">
+      Rating: {{ movie.imdbRating }}
+    </p>
     <p class="details-component__movie--duration">
       Duration: {{ movie.duration | duration }}
     </p>

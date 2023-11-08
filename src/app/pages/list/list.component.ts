@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieService } from 'src/app/core/services/movie/movies.service';
-import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
+import { MovieService } from 'src/app/core/services/movie/movies.service'
 import { Observable, map } from 'rxjs';
+import { DataCardInterface } from 'src/app/shared/components/card/card.component';
 
 @Component({
   selector: 'app-list',
@@ -10,9 +10,9 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  public movies$!: Observable<MovieInterface[]>
+  //public movies$!: Observable<MovieInterface[]>
   searchMovie: string = '';
-  filteredMovies$!: Observable<MovieInterface[]>
+  filteredMovies$!: Observable<DataCardInterface[]>
   wrongMovie!: boolean;
 
   constructor(
@@ -22,12 +22,12 @@ export class ListComponent {
   }
 
   ngOnInit() {
-    this.movies$ = this.service.getMovies();
+    /* this.movies$ = this.service.getMovies(); */
     this.filterMovies();
   }
 
-  public goToDetail(movie: MovieInterface) {
-    this.router.navigate(['list', 'detail', movie.id]);
+  public goToDetail(movieId: number) {
+    this.router.navigate(['list', 'detail', movieId]);
   }
 
   onSearchMovie(searchMovie: string) {
@@ -37,15 +37,31 @@ export class ListComponent {
 
   filterMovies() {
     if (this.searchMovie === '' || this.searchMovie.length < 3) {
-      this.filteredMovies$ = this.movies$
+      this.filteredMovies$ = this.service.getMovies().pipe(
+        map((movies) => {
+          return movies.map(movie => ({
+            title: movie.title,
+            genre: movie.genre,
+            poster: movie.poster,
+            id: movie.id,
+          }))
+        })
+      )
       this.wrongMovie = false;
     } else {
-      this.filteredMovies$ = this.movies$.pipe(
-        map((movies) =>
-          movies.filter((movie) =>
-            movie.title.toLowerCase().startsWith(this.searchMovie.toLowerCase())
-          )
-        )
+      this.filteredMovies$ = this.service.getMovies().pipe(
+        map((movies) => {
+          return movies
+            .filter((movie) =>
+              movie.title.toLowerCase().startsWith(this.searchMovie.toLowerCase())
+            )
+            .map((movie) => ({
+              title: movie.title,
+              genre: movie.genre,
+              poster: movie.poster,
+              id: movie.id
+            }));
+        })
       );
       this.wrongMovie = false;
       this.filteredMovies$.subscribe(movie => {
