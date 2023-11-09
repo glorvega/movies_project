@@ -35,44 +35,38 @@ export class ListComponent {
     this.router.navigate(['list', 'detail', movieId]);
   }
 
+  editMovie(movieId: number) {
+    this.router.navigate(['edit', movieId])
+  }
+
   deleteMovie(id: number) {
-
-    /* public deleteCreation = (game: VideogamesInterface) => {
-      this.creationsService.deleteCreation(game.id).subscribe({
-        next: (id: any) => {
-          this.getVideogames();
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
-    }; */
-
-
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.apiService.deleteMovie(id);
-        this.filterMovies();
-
+    this.apiService.deleteMovie(id).subscribe({
+      next: () => {
         Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.apiService.deleteMovie(id);
+            this.filterMovies();
+
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
         });
-
-
-        //this.router.navigate(['list']);
-      }
-    });
-
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    })
   }
 
   onSearchMovie(searchMovie: string) {

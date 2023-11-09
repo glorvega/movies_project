@@ -15,6 +15,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
+  // MOVIE API CALLS
+
   getMovies(): Observable<MovieInterface[]> {
     return this.http.get<MovieInterface[]>(
       'http://localhost:3000/movies'
@@ -27,12 +29,37 @@ export class ApiService {
     )
   }
 
+  postMovie(movie: MovieInterface): Observable<MovieInterface> {
+    return this.http.post<MovieInterface>(
+      'http://localhost:3000/movies',
+      movie,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
+  editMovie(movie: MovieInterface): Observable<MovieInterface> {
+    return this.http.put<MovieInterface>(
+      `http://localhost:3000/movies/${movie.id}`,
+      movie,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+  }
+
   deleteMovie(id: number): Observable<DataCardInterface> {
     return this.http.delete<DataCardInterface>(
       `http://localhost:3000/movies/${id}`
     );
-    console.log('llamo a delete api');
   }
+
+  // ACTORS API CALLS
 
   getActors(): Observable<ActorInterface[]> {
     return this.http.get<ActorInterface[]>(
@@ -46,6 +73,8 @@ export class ApiService {
     )
   }
 
+  //COMPANIES API CALLS
+
   getCompanies(): Observable<CompanyInterface[]> {
     return this.http.get<CompanyInterface[]>(
       'http://localhost:3000/companies'
@@ -58,30 +87,5 @@ export class ApiService {
     )
   }
 
-
-
-  /* getMovie(): Observable<MovieInterface> {
-    return this.http.get<MovieInterface>(
-      `http://localhost:3000/movies/${id}`
-    );
-  }
-
-  deleteMovie(): Observable<MovieInterface> {
-    return this.http.delete<MovieInterface>(
-      `http://localhost:3000/movies/${id}`
-    );
-  } */
-
-  /* editMovie(movie: MovieInterface): Observable<MovieInterface> {
-    return this.http.put<MovieInterface>(
-      `http://localhost:3000/movies/${movie.id}`,
-      movie,
-      {
-        headers: {
-          'Content-Type: 'application/json',
-        }
-      }
-    )s
-  } */
 
 }

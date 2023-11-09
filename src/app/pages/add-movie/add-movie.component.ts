@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   templateUrl: './add-movie.component.html',
   styleUrls: ['./add-movie.component.scss']
 })
-export class AddMovieComponent {
+export class AddMovieComponent implements OnInit {
+  id!: number;
+  isEdit: boolean = false;
+
   registerForm = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     cover: ['', [Validators.required]],
@@ -24,9 +27,31 @@ export class AddMovieComponent {
     private fb: FormBuilder
   ) { }
 
+  ngOnInit(): void {
+    if (this.id) {
+      this.isEdit = true;
+    }
+  }
+
   onSubmit() {
     console.log(this.registerForm.value);
+    this.router.navigate(['list'])
 
-    //this.router.navigate(['list'])
+
   }
+
+  /* addToCollection = (game: VideogamesInterface) => {
+    this.creationsService.postVideogame(game).subscribe({
+      next: (videogame) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Videojuego añadido correctamente',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate(['creations']);
+      },
+      error: (error) => console.error('Error en get routes: ', error),
+    });
+  }; */
 }
