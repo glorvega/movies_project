@@ -34,6 +34,7 @@ export class CardComponent implements OnChanges {
   @Input() isActor!: boolean;
   @Input() item!: DataCardInterface;
   @Output() editElement: EventEmitter<void> = new EventEmitter<void>();
+  @Output() deleteElement: EventEmitter<void> = new EventEmitter<void>();
   @Output() goToDetail: EventEmitter<void> = new EventEmitter<void>();
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -44,6 +45,10 @@ export class CardComponent implements OnChanges {
 
   onEditElement() {
     this.editElement.emit();
+  }
+
+  onDeleteElement() {
+    this.deleteElement.emit();
   }
 
   navigateToDetail() {

@@ -6,6 +6,7 @@
       *ngFor="let movie of filteredMovies$ | async"
       [item]="movie"
       (goToDetail)="goToDetail(movie.id)"
+      (deleteElement)="deleteMovie(movie.id)"
       [isMovie]="true"
     ></app-card>
 

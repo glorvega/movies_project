@@ -12,6 +12,13 @@
           placeholder="Insert movie title..."
           formControlName="title"
         />
+        <small
+          *ngIf="
+            registerForm.get('title')?.invalid &&
+            registerForm.get('title')?.touched
+          "
+          >*Title must contain at least 3 letters.</small
+        >
       </div>
       <div class="form-group">
         <label for="poster">Cover</label>
@@ -22,6 +29,13 @@
           placeholder="Insert cover url..."
           formControlName="cover"
         />
+        <small
+          *ngIf="
+            registerForm.get('cover')?.invalid &&
+            registerForm.get('cover')?.touched
+          "
+          >*You need to insert a cover.</small
+        >
       </div>
       <div class="form-group">
         <label for="genre">Genre</label>
@@ -40,6 +54,13 @@
           <option>New Genre</option>
           <option>Other</option>
         </select>
+        <small
+          *ngIf="
+            registerForm.get('genre')?.invalid &&
+            registerForm.get('genre')?.touched
+          "
+          >*You need to choose a genre.</small
+        >
       </div>
       <div class="form-group">
         <label for="actors">Actors</label>
@@ -50,6 +71,13 @@
           <option>4</option>
           <option>5</option>
         </select>
+        <small
+          *ngIf="
+            registerForm.get('actors')?.invalid &&
+            registerForm.get('actors')?.touched
+          "
+          >*You need to select an actor.</small
+        >
       </div>
       <div class="form-group">
         <label for="studios">Film Studios</label>
@@ -60,6 +88,13 @@
           <option>4</option>
           <option>5</option>
         </select>
+        <small
+          *ngIf="
+            registerForm.get('studios')?.invalid &&
+            registerForm.get('studios')?.touched
+          "
+          >*You need to select a film studios.</small
+        >
       </div>
       <div class="form-group">
         <label for="year">Year</label>
@@ -67,23 +102,33 @@
           type="number"
           class="form-control"
           id="year"
-          min="1940"
-          max="2023"
           placeholder="Insert year..."
           formControlName="year"
         />
+        <small
+          *ngIf="
+            registerForm.get('year')?.invalid &&
+            registerForm.get('year')?.touched
+          "
+          >*You must insert a year between 1940 and 2023.</small
+        >
       </div>
       <div class="form-group">
-        <label for="number">Duration</label>
+        <label for="duration">Duration (min)</label>
         <input
           type="number"
           class="form-control"
           id="duration"
-          min="0"
-          max="500"
           placeholder="Insert duration..."
           formControlName="duration"
         />
+        <small
+          *ngIf="
+            registerForm.get('duration')?.invalid &&
+            registerForm.get('duration')?.touched
+          "
+          >*It must be at least 1 min long.</small
+        >
       </div>
       <div class="form-group">
         <label for="number">Rating</label>
@@ -93,11 +138,21 @@
           id="rating"
           placeholder="Insert rating..."
           formControlName="rating"
-          min="0"
-          max="10"
         />
+        <small
+          *ngIf="
+            registerForm.get('rating')?.invalid &&
+            registerForm.get('rating')?.touched
+          "
+          >*You must choose a rating between 1 and 10.</small
+        >
       </div>
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="onSubmit()"
+        [disabled]="registerForm.invalid"
+      >
         Submit
       </button>
     </form>

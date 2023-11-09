@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 })
 export class AddMovieComponent {
   registerForm = this.fb.group({
-    title: ['', Validators.required],
-    cover: ['', Validators.required],
-    genre: ['', Validators.required],
-    actors: ['', Validators.required],
-    studios: ['', Validators.required],
-    year: ['', Validators.required],
-    duration: [0, Validators.required],
-    rating: [0, Validators.required],
+    title: ['', [Validators.required, Validators.minLength(3)]],
+    cover: ['', [Validators.required]],
+    genre: ['', [Validators.required]],
+    actors: ['', [Validators.required]],
+    studios: ['', [Validators.required]],
+    year: ['', [Validators.required, Validators.min(1940), Validators.max(2023)]],
+    duration: [0, [Validators.required, Validators.min(1), Validators.max(500)]],
+    rating: [0, [Validators.required, Validators.min(1), Validators.max(10)]],
   })
 
   constructor(
