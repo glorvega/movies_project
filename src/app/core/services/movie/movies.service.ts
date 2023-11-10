@@ -50,7 +50,9 @@ export class MovieService {
     );
   }
 
-
+  getGenres(): Observable<string[]> {
+    return this.getMovies().pipe(map(movies => Array.from(new Set(movies.flatMap(movie => movie.genre)))));
+  }
 
 
 }

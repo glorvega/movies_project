@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ActorInterface } from 'src/app/core/services/actor/actor.interface';
+import { ApiService } from 'src/app/core/services/api.service';
+import { CompanyInterface } from 'src/app/core/services/company/company.interface';
+import { MovieInterface, MovieInterfaceComplete } from 'src/app/core/services/movie/movie.interface';
+import { MovieService } from 'src/app/core/services/movie/movies.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-movie',
@@ -8,39 +14,91 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-movie.component.scss']
 })
 export class AddMovieComponent implements OnInit {
-  id!: number;
+  movieId: number = this.route.snapshot.params['movieId'];
   isEdit: boolean = false;
+  genres: string[] = [];
+  actors: ActorInterface[] = [];
+  companies: CompanyInterface[] = [];
 
-  registerForm = this.fb.group({
-    title: ['', [Validators.required, Validators.minLength(3)]],
-    cover: ['', [Validators.required]],
-    genre: ['', [Validators.required]],
-    actors: ['', [Validators.required]],
-    studios: ['', [Validators.required]],
+  registerForm: FormGroup = this.fb.group({
+    id: [this.movieId],
+    title: ['', [Validators.required, Validators.minLength(3), Validators.pattern('.*PELÍCULA AÑADIDA$')]],
+    poster: ['', [Validators.required]],
+    genre: [[], [Validators.required]],
+    actors: [[], [Validators.required]],
+    companies: [[], [Validators.required]],
     year: ['', [Validators.required, Validators.min(1940), Validators.max(2023)]],
     duration: [0, [Validators.required, Validators.min(1), Validators.max(500)]],
-    rating: [0, [Validators.required, Validators.min(1), Validators.max(10)]],
+    imdbRating: [0, [Validators.required, Validators.min(1), Validators.max(10)]],
   })
+  get genresFormArray() {
+    return this.registerForm.get('genre') as FormArray
+  }
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
+    private service: MovieService,
+    private apiService: ApiService,
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    if (this.id) {
+    if (this.movieId) {
       this.isEdit = true;
+      this.service.getMovieComplete(this.movieId).subscribe((movie) => {
+        this.registerForm.patchValue(movie);
+        console.log(this.registerForm.value);
+      })
     }
+    this.service.getGenres().subscribe(genres => this.genres = genres);
+    this.apiService.getActors().subscribe(actors => this.actors = actors);
+    this.apiService.getCompanies().subscribe(companies => this.companies = companies);
   }
+
+  marcarComoSeleccionada(opcion: string) {
+    return this.genresFormArray.value.includes(opcion);
+  }
+
+  editMovie(movie: MovieInterfaceComplete) {
+    this.apiService.editMovie(movie).subscribe({
+      next: (movie) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Movie updated!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate(['detail', this.movieId]);
+      },
+      error: (error) => console.error('Error en get routes: ', error),
+    });
+  }
+
 
   onSubmit() {
     console.log(this.registerForm.value);
-    this.router.navigate(['list'])
 
+    if (this.isEdit) {
+      this.editMovie(this.registerForm.value)
+    }
+
+    this.router.navigate(['list'])
 
   }
 
-  /* addToCollection = (game: VideogamesInterface) => {
+  /* getVideogame(id: string) {
+    this.creationsService.getCreation(id).subscribe({
+      next: (game) => {
+        this.videogamesForm.patchValue(game);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  addToCollection = (game: VideogamesInterface) => {
     this.creationsService.postVideogame(game).subscribe({
       next: (videogame) => {
         Swal.fire({
@@ -53,5 +111,14 @@ export class AddMovieComponent implements OnInit {
       },
       error: (error) => console.error('Error en get routes: ', error),
     });
-  }; */
+  };
+
+
+  sendInfo() {
+    if (this.isEdit) {
+      this.editGame(this.videogamesForm.value);
+    } else {
+      this.addToCollection(this.videogamesForm.value);
+    }
+  } */
 }

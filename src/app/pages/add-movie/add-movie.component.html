@@ -1,6 +1,8 @@
 <div class="add-movie">
   <div class="add-movie__form">
-    <h3 class="add-movie__form--title">Add a new movie</h3>
+    <h3 class="add-movie__form--title">
+      {{ isEdit ? "Edit" : "Add" }} your movie
+    </h3>
     <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title</label>
@@ -9,7 +11,6 @@
           class="form-control"
           id="text"
           aria-describedby="title"
-          placeholder="Insert movie title..."
           formControlName="title"
         />
         <small
@@ -17,7 +18,8 @@
             registerForm.get('title')?.invalid &&
             registerForm.get('title')?.touched
           "
-          >*Title must contain at least 3 letters.</small
+          >*Title must contain at least 3 letters and end with "PELÍCULA
+          AÑADIDA".</small
         >
       </div>
       <div class="form-group">
@@ -26,22 +28,28 @@
           type="url"
           class="form-control"
           id="exampleInputPassword1"
-          placeholder="Insert cover url..."
-          formControlName="cover"
+          formControlName="poster"
         />
         <small
           *ngIf="
-            registerForm.get('cover')?.invalid &&
-            registerForm.get('cover')?.touched
+            registerForm.get('poster')?.invalid &&
+            registerForm.get('poster')?.touched
           "
           >*You need to insert a cover.</small
         >
       </div>
       <div class="form-group">
         <label for="genre">Genre</label>
-        <select class="form-control" id="genre" formControlName="genre">
-          <option>Comedy</option>
-          <option>Musical</option>
+        <select
+          class="form-control"
+          id="genre"
+          formControlName="genre"
+          multiple
+        >
+          <option *ngFor="let genre of genres" [value]="genre">
+            {{ genre }}
+          </option>
+          <!-- <option>Musical</option>
           <option>Romance</option>
           <option>Horror</option>
           <option>Thriller</option>
@@ -52,7 +60,7 @@
           <option>Animation</option>
           <option>Sci-fi</option>
           <option>New Genre</option>
-          <option>Other</option>
+          <option>Other</option> -->
         </select>
         <small
           *ngIf="
@@ -64,12 +72,19 @@
       </div>
       <div class="form-group">
         <label for="actors">Actors</label>
-        <select class="form-control" id="actors" formControlName="actors">
-          <option>1</option>
-          <option>2</option>
+        <select
+          class="form-control"
+          id="actors"
+          formControlName="actors"
+          multiple
+        >
+          <option *ngFor="let actor of actors" [value]="actor">
+            {{ actor.nombre_completo }}
+          </option>
+          <!-- <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option>5</option> -->
         </select>
         <small
           *ngIf="
@@ -80,18 +95,25 @@
         >
       </div>
       <div class="form-group">
-        <label for="studios">Film Studios</label>
-        <select class="form-control" id="studios" formControlName="studios">
-          <option>1</option>
-          <option>2</option>
+        <label for="companies">Film Studios</label>
+        <select
+          class="form-control"
+          id="companies"
+          formArrayName="companies"
+          multiple
+        >
+          <option *ngFor="let company of companies">
+            {{ company.name }}
+          </option>
+          <!-- <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option>5</option> -->
         </select>
         <small
           *ngIf="
-            registerForm.get('studios')?.invalid &&
-            registerForm.get('studios')?.touched
+            registerForm.get('companies')?.invalid &&
+            registerForm.get('companies')?.touched
           "
           >*You need to select a film studios.</small
         >
@@ -102,7 +124,6 @@
           type="number"
           class="form-control"
           id="year"
-          placeholder="Insert year..."
           formControlName="year"
         />
         <small
@@ -119,7 +140,6 @@
           type="number"
           class="form-control"
           id="duration"
-          placeholder="Insert duration..."
           formControlName="duration"
         />
         <small
@@ -135,14 +155,13 @@
         <input
           type="number"
           class="form-control"
-          id="rating"
-          placeholder="Insert rating..."
-          formControlName="rating"
+          id="imdbRating"
+          formControlName="imdbRating"
         />
         <small
           *ngIf="
-            registerForm.get('rating')?.invalid &&
-            registerForm.get('rating')?.touched
+            registerForm.get('imdbRating')?.invalid &&
+            registerForm.get('imdbRating')?.touched
           "
           >*You must choose a rating between 1 and 10.</small
         >

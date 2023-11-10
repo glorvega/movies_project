@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
+import { MovieInterface, MovieInterfaceComplete } from 'src/app/core/services/movie/movie.interface';
 import { Observable } from 'rxjs';
 import { ActorInterface } from './actor/actor.interface';
 import { CompanyInterface } from './company/company.interface';
@@ -41,8 +41,10 @@ export class ApiService {
     );
   }
 
-  editMovie(movie: MovieInterface): Observable<MovieInterface> {
-    return this.http.put<MovieInterface>(
+  editMovie(movie: MovieInterfaceComplete): Observable<MovieInterfaceComplete> {
+    console.log(movie);
+
+    return this.http.put<MovieInterfaceComplete>(
       `http://localhost:3000/movies/${movie.id}`,
       movie,
       {

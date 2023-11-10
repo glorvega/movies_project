@@ -159,6 +159,23 @@
         2,
         6
       ]
+    },
+    {
+      "id": 11,
+      "title": "hjghg PELÍCULA AÑADIDA",
+      "poster": "https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8JTIwcGhvdG98ZW58MHx8MHx8fDA%3D",
+      "genre": [
+        "Nuevo Género"
+      ],
+      "actors": [
+        "Oscar Isaac"
+      ],
+      "companies": [
+        "Hane, Metz and Morar"
+      ],
+      "year": 1956,
+      "duration": 67,
+      "imdbRating": 3
     }
   ],
   "actors": [
