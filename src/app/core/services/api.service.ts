@@ -29,8 +29,8 @@ export class ApiService {
     )
   }
 
-  postMovie(movie: MovieInterface): Observable<MovieInterface> {
-    return this.http.post<MovieInterface>(
+  postMovie(movie: MovieInterfaceComplete): Observable<MovieInterfaceComplete> {
+    return this.http.post<MovieInterfaceComplete>(
       'http://localhost:3000/movies',
       movie,
       {

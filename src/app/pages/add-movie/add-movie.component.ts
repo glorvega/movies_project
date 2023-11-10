@@ -56,9 +56,9 @@ export class AddMovieComponent implements OnInit {
     this.apiService.getCompanies().subscribe(companies => this.companies = companies);
   }
 
-  marcarComoSeleccionada(opcion: string) {
+  /* marcarComoSeleccionada(opcion: string) {
     return this.genresFormArray.value.includes(opcion);
-  }
+  } */
 
   editMovie(movie: MovieInterfaceComplete) {
     this.apiService.editMovie(movie).subscribe({
@@ -69,10 +69,28 @@ export class AddMovieComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.router.navigate(['detail', this.movieId]);
+        //this.router.navigate(['detail', this.movieId]);
       },
       error: (error) => console.error('Error en get routes: ', error),
     });
+  }
+
+  addMovie(movie: MovieInterfaceComplete) {
+    console.log("addmovieeee");
+
+    this.apiService.postMovie(movie).subscribe({
+      next: (movie) => {
+        Swal.fire({
+          icon: 'success',
+          title: `${movie.title} has been added to your collection!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.router.navigate(['list']);
+      },
+      error: (error) => console.log('Error', error),
+
+    })
   }
 
 
@@ -81,44 +99,9 @@ export class AddMovieComponent implements OnInit {
 
     if (this.isEdit) {
       this.editMovie(this.registerForm.value)
-    }
-
-    this.router.navigate(['list'])
-
-  }
-
-  /* getVideogame(id: string) {
-    this.creationsService.getCreation(id).subscribe({
-      next: (game) => {
-        this.videogamesForm.patchValue(game);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
-
-  addToCollection = (game: VideogamesInterface) => {
-    this.creationsService.postVideogame(game).subscribe({
-      next: (videogame) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Videojuego añadido correctamente',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        this.router.navigate(['creations']);
-      },
-      error: (error) => console.error('Error en get routes: ', error),
-    });
-  };
-
-
-  sendInfo() {
-    if (this.isEdit) {
-      this.editGame(this.videogamesForm.value);
     } else {
-      this.addToCollection(this.videogamesForm.value);
+      this.addMovie(this.registerForm.value);
     }
-  } */
+
+  }
 }

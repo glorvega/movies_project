@@ -99,7 +99,7 @@
         <select
           class="form-control"
           id="companies"
-          formArrayName="companies"
+          formControlName="companies"
           multiple
         >
           <option *ngFor="let company of companies">
@@ -169,7 +169,6 @@
       <button
         type="submit"
         class="btn btn-primary"
-        (click)="onSubmit()"
         [disabled]="registerForm.invalid"
       >
         Submit
