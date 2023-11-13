@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MovieInterface } from 'src/app/core/services/movie/movie.interface';
 
 export interface DataCardInterface {
   id: number;
@@ -17,7 +18,7 @@ export interface DataCardInterface {
   bornCity?: string;
   birthdate?: string;
   img?: string;
-  movies?: number[];
+  movies?: MovieInterface[];
   nombre_completo?: string;
 
 }

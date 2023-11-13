@@ -20,7 +20,7 @@ export class ActorsComponent {
   }
 
   getActors() {
-    this.actors$ = this.service.getActors().pipe(
+    this.actors$ = this.service.getActorsWithMovies().pipe(
       map((actors) => {
         return actors.map((actor) => ({
           id: actor.id,

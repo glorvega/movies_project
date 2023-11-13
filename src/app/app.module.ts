@@ -18,6 +18,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SpinnerService } from './core/services/spinner/spinner.service';
 import { SpinnerModule } from './core/spinner/spinner.module';
 import { SpinnerInterceptor } from './core/interceptor/spinner.interceptor';
+import { StarRatingModule } from 'angular-star-rating';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SpinnerInterceptor } from './core/interceptor/spinner.interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     ProgressSpinnerModule,
+    StarRatingModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     FooterModule,

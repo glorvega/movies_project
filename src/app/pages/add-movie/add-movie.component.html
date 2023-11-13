@@ -49,18 +49,6 @@
           <option *ngFor="let genre of genres" [value]="genre">
             {{ genre }}
           </option>
-          <!-- <option>Musical</option>
-          <option>Romance</option>
-          <option>Horror</option>
-          <option>Thriller</option>
-          <option>Drama</option>
-          <option>Adventure</option>
-          <option>Crime</option>
-          <option>Action</option>
-          <option>Animation</option>
-          <option>Sci-fi</option>
-          <option>New Genre</option>
-          <option>Other</option> -->
         </select>
         <small
           *ngIf="
@@ -78,7 +66,7 @@
           formControlName="actors"
           multiple
         >
-          <option *ngFor="let actor of actors" [value]="actor">
+          <option *ngFor="let actor of actors" [value]="actor.id">
             {{ actor.nombre_completo }}
           </option>
           <!-- <option>2</option>
@@ -102,13 +90,9 @@
           formControlName="companies"
           multiple
         >
-          <option *ngFor="let company of companies">
+          <option *ngFor="let company of companies" [value]="company.id">
             {{ company.name }}
           </option>
-          <!-- <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option> -->
         </select>
         <small
           *ngIf="

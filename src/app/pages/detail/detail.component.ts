@@ -12,38 +12,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent {
-  movieId: string | null = '';
+  //movieId: string | null = '';
+  movieId: number = this.route.snapshot.params['movieId'];
   movie$!: Observable<MovieInterfaceComplete>;
 
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private router: Router
-  ){
-    this.movieId = this.route.snapshot.paramMap.get('movieId');
-    if(this.movieId){
-      this.movie$ = this.movieService.getMovieComplete(Number(this.movieId));
+  ) {
+    //this.movieId = this.route.snapshot.paramMap.get('movieId');
+    if (this.movieId) {
+      this.movie$ = this.movieService.getMovieComplete(this.movieId);
+      console.log(this.movie$, 'peli detail');
     }
   }
 
-  deleteMovie(){
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
-        this.router.navigate(['list']);
-      }
-    });
+  deleteMovie() {
+    this.movieService.deleteMovie(Number(this.movieId));
   }
 }

@@ -7,7 +7,14 @@
       {{ movie.title }}
     </p>
     <p class="details-component__movie--rating">
-      Rating: {{ movie.imdbRating }}
+      Rating:
+      <star-rating
+        [starType]="'svg'"
+        [rating]="movie.imdbRating"
+        [readOnly]="true"
+        [numOfStars]="5"
+        [showHalfStars]="true"
+      ></star-rating>
     </p>
     <p class="details-component__movie--duration">
       Duration: {{ movie.duration | duration }}

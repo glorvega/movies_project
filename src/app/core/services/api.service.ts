@@ -29,8 +29,8 @@ export class ApiService {
     )
   }
 
-  postMovie(movie: MovieInterfaceComplete): Observable<MovieInterfaceComplete> {
-    return this.http.post<MovieInterfaceComplete>(
+  postMovie(movie: MovieInterface): Observable<MovieInterface> {
+    return this.http.post<MovieInterface>(
       'http://localhost:3000/movies',
       movie,
       {
@@ -41,10 +41,10 @@ export class ApiService {
     );
   }
 
-  editMovie(movie: MovieInterfaceComplete): Observable<MovieInterfaceComplete> {
+  editMovie(movie: MovieInterface): Observable<MovieInterface> {
     console.log(movie);
 
-    return this.http.put<MovieInterfaceComplete>(
+    return this.http.put<MovieInterface>(
       `http://localhost:3000/movies/${movie.id}`,
       movie,
       {
@@ -87,6 +87,18 @@ export class ApiService {
     return this.http.get<CompanyInterface>(
       `http://localhost:3000/companies/${id}`
     )
+  }
+
+  editCompany(company: CompanyInterface): Observable<CompanyInterface> {
+    return this.http.put<CompanyInterface>(
+      `http://localhost:3000/companies/${company.id}`,
+      company,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 
 

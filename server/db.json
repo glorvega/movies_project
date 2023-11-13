@@ -159,6 +159,78 @@
         2,
         6
       ]
+    },
+    {
+      "id": 11,
+      "title": "Shrek PELÍCULA AÑADIDA",
+      "poster": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/549af980-f98e-4b3f-9f9f-9f91292f5b5b/dfy0i23-1e734d7c-ab04-4f34-8515-0fe19f3029c1.png/v1/fill/w_751,h_1064,q_70,strp/shrek__2001__uphe_dvd_cover_by_smashupmashups_dfy0i23-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI3NSIsInBhdGgiOiJcL2ZcLzU0OWFmOTgwLWY5OGUtNGIzZi05ZjlmLTlmOTEyOTJmNWI1YlwvZGZ5MGkyMy0xZTczNGQ3Yy1hYjA0LTRmMzQtODUxNS0wZmUxOWYzMDI5YzEucG5nIiwid2lkdGgiOiI8PTkwMCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QowOnQ2xMrw46D8X9JfMy_aL3ilxshJzNzzKZuBF2hc",
+      "genre": [
+        "Adventure",
+        "Animation"
+      ],
+      "actors": [
+        2
+      ],
+      "companies": [
+        3
+      ],
+      "year": 2001,
+      "duration": 234,
+      "imdbRating": 10
+    },
+    {
+      "id": 12,
+      "title": "Ghost in the Shell PELÍCULA AÑADIDA",
+      "poster": "https://play-lh.googleusercontent.com/Bx6nSkt7KZiF220wjIR81h56bN40aMm8EJH2VFj8BgfL-9vruEr6wR1hCyz4rgiXaYe8h7rN7RASau--1tc",
+      "genre": [
+        "Horror"
+      ],
+      "actors": [
+        4
+      ],
+      "companies": [
+        3
+      ],
+      "year": 1998,
+      "duration": 182,
+      "imdbRating": 10
+    },
+    {
+      "id": 13,
+      "title": "Big Fish PELÍCULA AÑADIDA",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/4/41/Big_Fish_movie_poster.png",
+      "genre": [
+        "Comedy",
+        "Musical",
+        "Romance"
+      ],
+      "actors": [
+        3
+      ],
+      "companies": [
+        4
+      ],
+      "year": 2005,
+      "duration": 128,
+      "imdbRating": 3
+    },
+    {
+      "id": 14,
+      "title": "Sin City PELÍCULA AÑADIDA",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/4/41/Big_Fish_movie_poster.png",
+      "genre": [
+        "Sci-Fi",
+        "Nuevo Género"
+      ],
+      "actors": [
+        2
+      ],
+      "companies": [
+        1
+      ],
+      "year": 2006,
+      "duration": 129,
+      "imdbRating": 4
     }
   ],
   "actors": [
@@ -251,7 +323,6 @@
       "movies": [
         1,
         2,
-        5,
         10
       ],
       "nombre_completo": "Hale Bangs"
@@ -266,7 +337,6 @@
       "img": "https://m.media-amazon.com/images/M/MV5BNWY5OGM2MWMtZDZjNi00NjFkLWE3YTUtYWVmYWJhYjQ3NjgzXkEyXkFqcGdeQXVyODUyNzc3NTY@._V1_FMjpg_UX1000_.jpg",
       "rating": 9.82,
       "movies": [
-        5,
         9
       ],
       "nombre_completo": "Emma Mackey"
@@ -282,7 +352,6 @@
       "rating": 7.42,
       "movies": [
         4,
-        5,
         9
       ],
       "nombre_completo": "Mary Elizabeth Winstead"
@@ -305,17 +374,17 @@
     },
     {
       "id": 10,
-      "first_name": "Matt",
-      "last_name": "Leblanc",
+      "first_name": "Donald",
+      "last_name": "Glover",
       "gender": "Male",
       "bornCity": "Wakimachi",
       "birthdate": "28/10/1953",
-      "img": "https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/moda-cine/10-cosas-curiosas-que-le-han-pasado-a-matt-leblanc-en-sus-50-anos-de-vida/matt-leblanc-un-hombre-un-plan/136186720-1-esl-ES/matt-leblanc-un-hombre-un-plan.jpg",
+      "img": "https://m.media-amazon.com/images/M/MV5BNzUxNTU5ODkxNl5BMl5BanBnXkFtZTgwOTIyNjc5MDI@._V1_.jpg",
       "rating": 5.39,
       "movies": [
         4
       ],
-      "nombre_completo": "Matt Leblanc"
+      "nombre_completo": "Donald Glover"
     }
   ],
   "companies": [
@@ -327,9 +396,7 @@
       "employees": 81,
       "rating": 4.32,
       "movies": [
-        12,
-        12,
-        12
+        14
       ]
     },
     {
@@ -352,11 +419,11 @@
       "employees": 511,
       "rating": 8.09,
       "movies": [
-        5,
         6,
         7,
         1,
-        11
+        11,
+        12
       ]
     },
     {
@@ -370,7 +437,7 @@
         8,
         9,
         2,
-        12
+        13
       ]
     },
     {

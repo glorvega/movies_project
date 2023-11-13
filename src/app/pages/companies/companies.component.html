@@ -1,11 +1,11 @@
 <div class="companies-component">
   <p class="companies-component__title">List of Companies</p>
-
   <div class="companies-component__cards">
     <app-card
       *ngFor="let company of companies$ | async"
       [item]="company"
       [isCompany]="true"
-    ></app-card>
+    >
+    </app-card>
   </div>
 </div>

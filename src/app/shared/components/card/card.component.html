@@ -19,6 +19,7 @@
     <div class="card-body">
       <h5 class="card-title">Company name: {{ item.name }}</h5>
       <p class="card-text">Country: {{ item.country }}</p>
+
       <p class="card-text" *ngIf="item.createYear">
         Foundation: {{ item.createYear }}
         <svg
@@ -58,7 +59,24 @@
         </svg>
         {{ item.employees }}
       </p>
+      <hr />
+      <div class="card-movies">
+        <p class="card-title">Movies:</p>
+        <ul class="card-movies" *ngFor="let movie of item.movies">
+          <li>
+            {{ movie.title }}
+          </li>
+        </ul>
+      </div>
+
       <p class="card-text">Company rating: {{ item.rating }}</p>
+      <star-rating
+        [starType]="'svg'"
+        [rating]="item.rating!"
+        [readOnly]="true"
+        [numOfStars]="7"
+        [showHalfStars]="true"
+      ></star-rating>
     </div>
   </ng-container>
   <ng-container *ngIf="isActor">
@@ -72,7 +90,15 @@
       <p class="card-text" *ngIf="item.gender === 'Female'">F</p>
       <p class="card-text" *ngIf="item.gender === 'Male'">M</p>
       <p class="card-text">{{ item.birthdate }}</p>
-      <p class="card-text">{{ item.movies }}</p>
+      <hr />
+      <div class="card-movies">
+        <p class="card-title">Movies:</p>
+        <ul class="card-movies" *ngFor="let movie of item.movies">
+          <li>
+            {{ movie.title }}
+          </li>
+        </ul>
+      </div>
     </div>
   </ng-container>
 </div>

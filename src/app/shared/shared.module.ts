@@ -6,13 +6,14 @@ import { DummyImgPipe } from './pipes/dummy.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { DurationPipe } from './pipes/duration.pipe';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 
 @NgModule({
   declarations: [CardComponent, PaginationComponent, DummyImgPipe, DurationPipe, SearchComponent],
   imports: [
-    CommonModule, FormsModule
+    CommonModule, FormsModule, StarRatingModule,
   ],
   exports: [CardComponent, PaginationComponent, DummyImgPipe, DurationPipe, SearchComponent]
 })

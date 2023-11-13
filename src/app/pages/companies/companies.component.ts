@@ -22,7 +22,7 @@ export class CompaniesComponent {
   }
 
   getCompanies() {
-    this.companies$ = this.service.getCompanies().pipe(
+    this.companies$ = this.service.getCompaniesWithMovies().pipe(
       map((companies) => {
         return companies.map((company) => ({
           id: company.id,
@@ -31,6 +31,7 @@ export class CompaniesComponent {
           country: company.country,
           employees: company.employees,
           rating: company.rating,
+          movies: company.movies
         }))
       })
 
