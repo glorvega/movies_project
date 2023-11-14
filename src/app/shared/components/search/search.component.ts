@@ -27,10 +27,6 @@ export class SearchComponent implements OnDestroy {
     this.searchSubject.next(this.inputSearch);
   }
 
-  /* onSearchMovie(){
-    this.searchMovie.emit(this.inputSearch)
-  } */
-
 
 
 }

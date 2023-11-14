@@ -10,13 +10,8 @@ import { Observable, forkJoin, from, map, mergeMap, switchMap, toArray } from 'r
 })
 export class CompanyService {
     constructor(
-        private http: HttpClient,
         private apiService: ApiService
     ) { }
-
-    getCompanies() {
-        return this.apiService.getCompanies()
-    }
 
     getCompaniesWithMovies(): Observable<CompanyInterfaceComplete[]> {
         return forkJoin({

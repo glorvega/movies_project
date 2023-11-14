@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterModule } from './core/footer/footer.module';
-import { NavbarModule } from './core/navbar/navbar.module';
 import { DetailModule } from './pages/detail/detail.module';
 import { HomeModule } from './pages/home/home.module';
 import { ListModule } from './pages/list/list.module';
@@ -19,10 +17,12 @@ import { SpinnerService } from './core/services/spinner/spinner.service';
 import { SpinnerModule } from './core/spinner/spinner.module';
 import { SpinnerInterceptor } from './core/interceptor/spinner.interceptor';
 import { StarRatingModule } from 'angular-star-rating';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +31,8 @@ import { StarRatingModule } from 'angular-star-rating';
     StarRatingModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    FooterModule,
-    NavbarModule,
+    NavbarComponent,
+    FooterComponent,
     DetailModule,
     ListModule,
     HomeModule,

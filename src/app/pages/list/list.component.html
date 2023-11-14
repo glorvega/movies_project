@@ -1,6 +1,7 @@
 <div class="list-component">
   <p class="list-component__title">Movie Catalog</p>
   <app-search (searchMovie)="onSearchMovie($event)"></app-search>
+
   <div class="list-component__cards">
     <app-card
       *ngFor="let movie of filteredMovies$ | async"

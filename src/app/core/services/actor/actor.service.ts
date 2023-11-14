@@ -10,13 +10,8 @@ import { MovieInterface, MovieInterfaceComplete } from '../movie/movie.interface
 })
 export class ActorService {
     constructor(
-        private http: HttpClient,
         private apiService: ApiService
     ) { }
-
-    getActors() {
-        return this.apiService.getActors()
-    }
 
     getActorsWithMovies(): Observable<ActorInterfaceComplete[]> {
         return forkJoin({

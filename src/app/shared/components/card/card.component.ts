@@ -40,7 +40,7 @@ export class CardComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['item']) {
-      console.log('ha habido cambios en', this.item);
+      console.log('ha habido cambios en card-component', this.item);
     }
   }
 

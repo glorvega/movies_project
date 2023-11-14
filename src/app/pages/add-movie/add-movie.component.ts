@@ -79,7 +79,6 @@ export class AddMovieComponent implements OnInit {
   }
 
   addMovie(movie: MovieInterface) {
-
     this.apiService.postMovie(movie).subscribe({
       next: (movie) => {
         console.log(movie);
@@ -93,7 +92,6 @@ export class AddMovieComponent implements OnInit {
         });
       },
       error: (error) => console.log('Error', error),
-
     })
   }
 
@@ -129,13 +127,11 @@ export class AddMovieComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.registerForm.value);
-
     if (this.isEdit) {
       this.editMovie(this.registerForm.value)
     } else {
       this.addMovie(this.registerForm.value);
     }
-
   }
+
 }

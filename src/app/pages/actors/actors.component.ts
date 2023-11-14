@@ -16,7 +16,6 @@ export class ActorsComponent {
 
   ngOnInit(): void {
     this.getActors();
-
   }
 
   getActors() {

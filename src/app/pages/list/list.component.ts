@@ -44,6 +44,7 @@ export class ListComponent {
 
   onSearchMovie(searchMovie: string) {
     this.searchMovie = searchMovie;
+    this.filterMovies()
 
   }
 

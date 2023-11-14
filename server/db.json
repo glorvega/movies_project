@@ -198,7 +198,7 @@
     {
       "id": 13,
       "title": "Big Fish PELÍCULA AÑADIDA",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/4/41/Big_Fish_movie_poster.png",
+      "poster": "noimg",
       "genre": [
         "Comedy",
         "Musical",
@@ -217,7 +217,7 @@
     {
       "id": 14,
       "title": "Sin City PELÍCULA AÑADIDA",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/4/41/Big_Fish_movie_poster.png",
+      "poster": "https://static.displate.com/280x392/displate/2021-10-01/122330e66dc25f7afe5942807d015ad2_2ff29701ab47946a438e8f0caadf5018.jpg",
       "genre": [
         "Sci-Fi",
         "Nuevo Género"
@@ -231,6 +231,23 @@
       "year": 2006,
       "duration": 129,
       "imdbRating": 4
+    },
+    {
+      "id": 15,
+      "title": "Your Name PELÍCULA AÑADIDA",
+      "poster": "noimg",
+      "genre": [
+        "Horror"
+      ],
+      "actors": [
+        5
+      ],
+      "companies": [
+        3
+      ],
+      "year": 1999,
+      "duration": 34,
+      "imdbRating": 5
     }
   ],
   "actors": [
@@ -423,7 +440,8 @@
         7,
         1,
         11,
-        12
+        12,
+        15
       ]
     },
     {
